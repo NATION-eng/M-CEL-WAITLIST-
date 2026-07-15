@@ -56,7 +56,7 @@ export function Hero() {
         >
           <motion.div
             variants={item}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-midnight-900/[0.08] bg-white/70 px-4 py-1.5 text-xs font-medium text-midnight-900/70 shadow-premium backdrop-blur-sm"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-1.5 text-xs font-medium text-white/70 shadow-premium backdrop-blur-sm"
           >
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
@@ -67,7 +67,7 @@ export function Hero() {
 
           <motion.h1
             variants={item}
-            className="font-display text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-midnight-900 sm:text-5xl md:text-6xl"
+            className="font-display text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl"
           >
             AI Productivity &amp; Digital
             <br className="hidden sm:block" /> Innovation Bootcamp
@@ -75,7 +75,7 @@ export function Hero() {
 
           <motion.p
             variants={item}
-            className="mt-6 max-w-xl text-balance text-base leading-relaxed text-midnight-900/60 sm:text-lg"
+            className="mt-6 max-w-xl text-balance text-base leading-relaxed text-white/60 sm:text-lg"
           >
             Join the waitlist for M-CEL TECH&rsquo;s upcoming hybrid training
             designed to equip professionals with practical AI and digital
@@ -90,9 +90,9 @@ export function Hero() {
             {modules.map(({ label, icon: Icon }) => (
               <span
                 key={label}
-                className="inline-flex items-center gap-1.5 rounded-full border border-midnight-900/[0.08] bg-white px-3.5 py-1.5 text-[13px] font-medium text-midnight-900/75 shadow-premium"
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3.5 py-1.5 text-[13px] font-medium text-white/80 shadow-premium"
               >
-                <Icon className="h-3.5 w-3.5 text-royal-500" strokeWidth={2} />
+                <Icon className="h-3.5 w-3.5 text-cyan-400" strokeWidth={2} />
                 {label}
               </span>
             ))}
@@ -104,14 +104,14 @@ export function Hero() {
             className="mt-9 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
           >
             <div className="flex items-baseline gap-1.5">
-              <span className="font-display text-3xl font-semibold text-midnight-900">
+              <span className="font-display text-3xl font-semibold text-white">
                 &#8358;15,000
               </span>
-              <span className="text-sm text-midnight-900/50">one-time</span>
+              <span className="text-sm text-white/50">one-time</span>
             </div>
-            <div className="h-8 w-px bg-midnight-900/10" />
-            <div className="flex items-center gap-2 text-sm font-medium text-midnight-900/70">
-              <Users2 className="h-4 w-4 text-royal-500" strokeWidth={2} />
+            <div className="h-8 w-px bg-white/10" />
+            <div className="flex items-center gap-2 text-sm font-medium text-white/70">
+              <Users2 className="h-4 w-4 text-cyan-400" strokeWidth={2} />
               Hybrid Format
             </div>
           </motion.div>

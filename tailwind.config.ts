@@ -42,9 +42,9 @@ const config: Config = {
       },
       backgroundImage: {
         "grid-pattern":
-          "linear-gradient(to right, rgba(15,23,42,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,23,42,0.045) 1px, transparent 1px)",
+          "linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px)",
         "hero-glow":
-          "radial-gradient(60% 50% at 50% 0%, rgba(37,99,235,0.14) 0%, rgba(34,211,238,0.06) 45%, rgba(255,255,255,0) 80%)",
+          "radial-gradient(60% 50% at 50% 0%, rgba(37,99,235,0.15) 0%, rgba(34,211,238,0.08) 50%, transparent 100%)",
       },
       boxShadow: {
         premium:

@@ -11,7 +11,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-midnight-900/[0.07] bg-white py-14">
+    <footer className="border-t border-white/[0.06] bg-midnight-950 py-14">
       <Container>
         <div className="flex flex-col items-center gap-8 text-center sm:flex-row sm:items-start sm:justify-between sm:text-left">
           <div>
@@ -21,16 +21,16 @@ export function Footer() {
                 alt="M-CEL TECH"
                 width={1106}
                 height={459}
-                className="h-9 w-auto"
+                className="h-9 w-auto brightness-0 invert"
               />
             </div>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-midnight-900/50">
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/50">
               Engineering Tomorrow&rsquo;s Technology, Today.
             </p>
           </div>
 
           <div className="flex flex-col items-center gap-3 sm:items-end">
-            <span className="text-xs font-medium uppercase tracking-wide text-midnight-900/40">
+            <span className="text-xs font-medium uppercase tracking-wide text-white/40">
               Reach us on WhatsApp
             </span>
             <div className="flex flex-col items-center gap-2 sm:items-end">
@@ -40,7 +40,7 @@ export function Footer() {
                   href={`https://wa.me/${raw}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-midnight-900/70 transition-colors hover:text-royal-500"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-white/70 transition-colors hover:text-cyan-400"
                 >
                   <MessageCircle className="h-3.5 w-3.5" strokeWidth={2} />
                   {display}
@@ -50,8 +50,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-midnight-900/[0.06] pt-6 text-center">
-          <p className="text-xs text-midnight-900/40">
+        <div className="mt-10 border-t border-white/[0.06] pt-6 text-center">
+          <p className="text-xs text-white/40">
             &copy; {year} M-CEL TECH. All rights reserved.
           </p>
         </div>

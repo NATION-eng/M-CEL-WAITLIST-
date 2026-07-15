@@ -67,17 +67,17 @@ export function WaitlistForm() {
       <Container>
         <div className="mx-auto max-w-xl">
           <FadeIn className="text-center">
-            <h2 className="font-display text-balance text-3xl font-semibold tracking-tight text-midnight-900 sm:text-4xl">
+            <h2 className="font-display text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               Reserve Your Spot
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-midnight-900/60">
+            <p className="mt-4 text-base leading-relaxed text-white/60">
               Secure your place before enrollment opens. It takes less than a
               minute.
             </p>
           </FadeIn>
 
           <FadeIn delay={0.1} className="mt-10">
-            <div className="relative rounded-2xl border border-midnight-900/[0.07] bg-white p-6 shadow-premium-lg sm:p-9">
+            <div className="relative rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 shadow-premium-lg sm:p-9 backdrop-blur-md">
               <AnimatePresence mode="wait">
                 {submitState === "success" ? (
                   <motion.div
@@ -90,17 +90,17 @@ export function WaitlistForm() {
                     <div className="flex h-14 w-14 items-center justify-center rounded-full bg-royal-500/10">
                       <PartyPopper className="h-7 w-7 text-royal-500" strokeWidth={2} />
                     </div>
-                    <h3 className="mt-5 font-display text-xl font-semibold text-midnight-900">
+                    <h3 className="mt-5 font-display text-xl font-semibold text-white">
                       You&rsquo;re officially on the waitlist!
                     </h3>
-                    <p className="mt-2 max-w-sm text-[15px] leading-relaxed text-midnight-900/60">
+                    <p className="mt-2 max-w-sm text-[15px] leading-relaxed text-white/60">
                       We&rsquo;ve received your details. We&rsquo;ll contact you
                       as soon as registration officially opens. Thank you for
                       choosing M-CEL TECH.
                     </p>
                     <button
                       onClick={() => setSubmitState("idle")}
-                      className="mt-6 text-sm font-medium text-royal-500 hover:text-royal-600"
+                      className="mt-6 text-sm font-medium text-cyan-400 hover:text-cyan-300"
                     >
                       Submit another response
                     </button>
@@ -180,16 +180,16 @@ export function WaitlistForm() {
                             "appearance-none pr-10"
                           )}
                         >
-                          <option value="" disabled>
+                          <option value="" disabled className="bg-midnight-950 text-white">
                             Select your state
                           </option>
                           {NIGERIAN_STATES.map((state) => (
-                            <option key={state} value={state}>
+                            <option key={state} value={state} className="bg-midnight-950 text-white">
                               {state}
                             </option>
                           ))}
                         </select>
-                        <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-midnight-900/40" />
+                        <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
                       </div>
                     </Field>
 
@@ -216,9 +216,9 @@ export function WaitlistForm() {
                         id="consent"
                         type="checkbox"
                         {...register("consent")}
-                        className="mt-0.5 h-4 w-4 shrink-0 rounded border-midnight-900/20 text-royal-500 focus:ring-royal-500/40"
+                        className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 bg-white/5 text-cyan-400 focus:ring-cyan-400/40"
                       />
-                      <span className="text-[13.5px] leading-relaxed text-midnight-900/60">
+                      <span className="text-[13.5px] leading-relaxed text-white/60">
                         I agree to receive updates from M-CEL TECH.
                       </span>
                     </label>
@@ -233,11 +233,11 @@ export function WaitlistForm() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="flex w-full items-center justify-center gap-2 rounded-full bg-royal-500 px-6 py-3.5 text-[15px] font-medium text-white shadow-glow transition-all hover:bg-royal-600 hover:shadow-premium-lg active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
+                      className="flex w-full items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3.5 text-[15px] font-semibold text-midnight-950 shadow-glow transition-all hover:bg-cyan-300 hover:shadow-premium-lg active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
                     >
                       {isSubmitting ? (
                         <>
-                          <Loader2 className="h-4 w-4 animate-spin" />
+                          <Loader2 className="h-4 w-4 animate-spin text-midnight-950" />
                           Submitting...
                         </>
                       ) : (
@@ -245,7 +245,7 @@ export function WaitlistForm() {
                       )}
                     </button>
 
-                    <p className="text-center text-xs text-midnight-900/40">
+                    <p className="text-center text-xs text-white/40">
                       Your information is kept private and used only for
                       bootcamp updates.
                     </p>
@@ -277,9 +277,9 @@ function Field({
     <div>
       <label
         htmlFor={htmlFor}
-        className="mb-1.5 block text-[13.5px] font-medium text-midnight-900/80"
+        className="mb-1.5 block text-[13.5px] font-medium text-white/80"
       >
-        {label} {required && <span className="text-royal-500">*</span>}
+        {label} {required && <span className="text-cyan-400">*</span>}
       </label>
       {children}
       {error && (
@@ -291,10 +291,10 @@ function Field({
 
 function inputClasses(hasError: boolean) {
   return cn(
-    "w-full rounded-xl border bg-midnight-50/40 px-4 py-3 text-[15px] text-midnight-900 outline-none transition-all placeholder:text-midnight-900/35",
-    "focus:border-royal-500 focus:bg-white focus:ring-4 focus:ring-royal-500/10",
+    "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-[15px] text-white outline-none transition-all placeholder:text-white/30",
+    "focus:border-cyan-400 focus:bg-midnight-950 focus:ring-4 focus:ring-cyan-400/10",
     hasError
-      ? "border-red-300 bg-red-50/40"
-      : "border-midnight-900/10 hover:border-midnight-900/20"
+      ? "border-red-500 bg-red-950/20"
+      : "border-white/[0.08] hover:border-white/[0.15]"
   );
 }

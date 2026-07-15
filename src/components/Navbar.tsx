@@ -31,7 +31,7 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-white/80 backdrop-blur-lg shadow-premium border-b border-midnight-900/[0.06]"
+          ? "bg-midnight-950/80 backdrop-blur-lg shadow-premium border-b border-white/[0.06]"
           : "bg-transparent border-b border-transparent"
       )}
     >
@@ -44,13 +44,13 @@ export function Navbar() {
               width={1106}
               height={459}
               priority
-              className="h-8 w-auto sm:h-9"
+              className="h-8 w-auto sm:h-9 brightness-0 invert"
             />
           </a>
 
           <button
             onClick={scrollToForm}
-            className="rounded-full bg-midnight-900 px-4 py-2 text-sm font-medium text-white shadow-premium transition-all hover:bg-royal-600 hover:shadow-glow active:scale-[0.97] sm:px-5 sm:py-2.5"
+            className="rounded-full bg-white px-4 py-2 text-sm font-medium text-midnight-950 shadow-premium transition-all hover:bg-white/90 hover:shadow-glow active:scale-[0.97] sm:px-5 sm:py-2.5"
           >
             Join Waitlist
           </button>

@@ -38,7 +38,7 @@ const highlights = [
 
 export function Highlights() {
   return (
-    <section className="relative overflow-hidden bg-midnight-900 py-20 sm:py-28">
+    <section className="relative overflow-hidden bg-midnight-900/40 border-y border-white/[0.05] py-20 sm:py-28">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_0%,rgba(37,99,235,0.25)_0%,rgba(15,23,42,0)_70%)]" />
 
       <Container className="relative">
