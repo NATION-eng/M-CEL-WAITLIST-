@@ -96,7 +96,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    console.error("[/api/waitlist] Unexpected error:", error);
+    console.error("[/api/waitlist] Unexpected error:", {
+      message: (error as Error)?.message,
+      code: (error as { code?: string })?.code,
+      stack: (error as Error)?.stack,
+      name: (error as Error)?.name,
+      DATABASE_URL_SET: !!process.env.DATABASE_URL,
+    });
 
     return NextResponse.json(
       {
