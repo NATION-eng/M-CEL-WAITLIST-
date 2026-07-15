@@ -1,0 +1,35 @@
+// M-CEL TECH — Waitlist database schema
+// Run `npx prisma db push` after setting DATABASE_URL to sync this with Postgres.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum WaitlistStatus {
+  WAITLISTED
+  INVITED
+  ENROLLED
+  CANCELLED
+}
+
+model Waitlist {
+  id         String         @id @default(uuid())
+  fullName   String
+  email      String         @unique
+  phone      String
+  state      String
+  occupation String?
+  consent    Boolean        @default(false)
+  status     WaitlistStatus @default(WAITLISTED)
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+
+  @@index([email])
+  @@index([createdAt])
+  @@map("waitlist")
+}
