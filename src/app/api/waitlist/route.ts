@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Prisma } from "@prisma/client";
-import { prisma } from "@/lib/prisma";
+import { supabase } from "@/lib/supabase";
 import { waitlistSchema } from "@/validations/waitlist";
 import { sanitizePhone, sanitizeText } from "@/lib/utils";
+import { randomUUID } from "crypto";
 
 export const runtime = "nodejs";
 
@@ -41,10 +41,23 @@ export async function POST(req: NextRequest) {
   const occupation = data.occupation ? sanitizeText(data.occupation) : null;
 
   try {
-    const existing = await prisma.waitlist.findUnique({
-      where: { email },
-      select: { id: true },
-    });
+    // Check if email already exists
+    const { data: existing, error: findError } = await supabase
+      .from("waitlist")
+      .select("id")
+      .eq("email", email)
+      .maybeSingle();
+
+    if (findError) {
+      console.error("[/api/waitlist] Supabase find error:", findError);
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Something went wrong on our end. Please try again shortly.",
+        },
+        { status: 500 }
+      );
+    }
 
     if (existing) {
       return NextResponse.json(
@@ -56,22 +69,46 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const entry = await prisma.waitlist.create({
-      data: {
+    const now = new Date().toISOString();
+
+    // Insert new waitlist entry
+    const { data: entry, error: insertError } = await supabase
+      .from("waitlist")
+      .insert({
+        id: randomUUID(),
         fullName,
         email,
         phone,
         state: data.state,
         occupation: occupation || null,
         consent: Boolean(data.consent),
-      },
-      select: {
-        id: true,
-        fullName: true,
-        email: true,
-        createdAt: true,
-      },
-    });
+        status: "WAITLISTED",
+        createdAt: now,
+        updatedAt: now,
+      })
+      .select("id, fullName, email, createdAt")
+      .single();
+
+    if (insertError) {
+      // Handle unique constraint violation
+      if (insertError.code === "23505") {
+        return NextResponse.json(
+          {
+            success: false,
+            message: "This email address is already on the waitlist.",
+          },
+          { status: 409 }
+        );
+      }
+      console.error("[/api/waitlist] Supabase insert error:", insertError);
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Something went wrong on our end. Please try again shortly.",
+        },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json(
       {
@@ -82,26 +119,9 @@ export async function POST(req: NextRequest) {
       { status: 201 }
     );
   } catch (error) {
-    // Handle a race-condition duplicate insert (unique constraint) gracefully.
-    if (
-      error instanceof Prisma.PrismaClientKnownRequestError &&
-      error.code === "P2002"
-    ) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "This email address is already on the waitlist.",
-        },
-        { status: 409 }
-      );
-    }
-
     console.error("[/api/waitlist] Unexpected error:", {
       message: (error as Error)?.message,
-      code: (error as { code?: string })?.code,
-      stack: (error as Error)?.stack,
       name: (error as Error)?.name,
-      DATABASE_URL_SET: !!process.env.DATABASE_URL,
     });
 
     return NextResponse.json(
